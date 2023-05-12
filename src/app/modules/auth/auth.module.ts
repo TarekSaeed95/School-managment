@@ -5,7 +5,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ChangepasswordComponent } from './pages/changepassword/changepassword.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthlayoutComponent } from './pages/authlayout/authlayout.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   bootstrap:[LoginComponent]
 })

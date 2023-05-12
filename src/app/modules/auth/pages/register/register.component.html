@@ -1,1 +1,57 @@
-<p>register works!</p>
+<div>
+    <form (ngSubmit)="register()" [formGroup]="registerform">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="stdfname" class="input-group-text">
+                        <span class="fa-sharp fa-solid fa-user"></span>
+                    </label>
+                    <input type="text" class="form-control"   
+                    placeholder="first name" id="stdfname" formControlName="studentfname"
+                    [ngClass]="{'is-invalid':(studentfnamecontrol.errors&&studentfnamecontrol.touched)||(studentfnamecontrol.errors&&submitted)}"/>
+                </div>
+                <div *ngIf="(studentfnamecontrol.errors&&submitted)||(studentfnamecontrol.errors&&studentfnamecontrol.touched)" class="invalid">
+                    <p *ngIf="studentfnamecontrol.errors['required']" class="invalid-feedback">student first name is required</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="stdlname" class="input-group-text">
+                        <span class="fa-sharp fa-solid fa-child"></span>
+                    </label>
+                    <input type="text" class="form-control"   
+                    placeholder="Age"  id="stdlname" formControlName="studentage"
+                    [ngClass]="{'is-invalid':(studentagecontrol.errors&&studentagecontrol.touched)||(studentagecontrol.errors&&submitted)}"/>
+                </div>
+                <div *ngIf="(studentagecontrol.errors&&submitted)||(studentagecontrol.errors&&studentagecontrol.touched)" class="invalid">
+                    <p *ngIf="studentagecontrol.errors['required']" class="invalid-feedback">student age is required</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="parentname" class="input-group-text">
+                <span class="fa-sharp fa-solid fa-user"></span>
+            </label>
+            <input type="text" class="form-control"   
+            placeholder="parent name" id="parentname" formControlName="parentname"
+            [ngClass]="{'is-invalid':(parentnamecontrol.errors&&parentnamecontrol.touched)||(parentnamecontrol.errors&&submitted)}"/>
+        </div>
+        <div *ngIf="(parentnamecontrol.errors&&submitted)||(parentnamecontrol.errors&&parentnamecontrol.touched)" class="invalid">
+            <p *ngIf="parentnamecontrol.errors['required']" class="invalid-feedback">parent name is required</p>
+        </div>
+        <div class="form-group">
+            <label for="parentemail" class="input-group-text">
+                <span class="fa-sharp fa-solid fa-mail-bulk"></span>
+            </label>
+            <input type="email" class="form-control"   
+            placeholder="parent email" id="parentemail" formControlName="parentemail"
+            [ngClass]="{'is-invalid':(parentemailcontrol.errors&&parentemailcontrol.touched)||(parentemailcontrol.errors&&submitted)}"/>
+        </div>
+        <div *ngIf="(parentemailcontrol.errors&&submitted)||(parentemailcontrol.errors&&parentemailcontrol.touched)" class="invalid">
+            <p *ngIf="parentemailcontrol.errors['required']" class="invalid-feedback">parent email is required</p>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Register" class="registerbtn"/>
+        </div>
+    </form>
+</div>
