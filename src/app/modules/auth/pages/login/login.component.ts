@@ -6,7 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-g(){
-  console.log(window.location)
-}
+  typepassword:string="password";
+  changetypepassword(){
+    if(this.typepassword==="password"){
+        this.typepassword="text";
+    }
+    else{
+      this.typepassword="password";
+    }
+  }
+  login(form:any){
+    if(form.valid){
+      
+    }
+  }
 }

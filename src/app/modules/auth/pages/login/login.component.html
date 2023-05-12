@@ -1,5 +1,38 @@
-<p>login works!</p>
-<a routerLink="/admin">admin</a>
-<a routerLink="/teacher">teacher</a>
-<a routerLink="/student">student</a>
-<a routerLink="/parent">parent</a>
+<div>
+    <form (ngSubmit)="login(loginform)" #loginform="ngForm">
+        <div class="form-group">
+            <label for="email" class="input-group-text">
+                <span class="fa-sharp fa-solid fa-envelope"></span>
+            </label>
+            <input type="email" class="form-control"   
+            placeholder="Email" #email="ngModel" ngModel name="email" id="email" required
+            [ngClass]="{'is-invalid':(email.errors&&email.touched)||(email.errors&&loginform.submitted)}"/>
+        </div>
+        <div *ngIf="(email.errors&&loginform.submitted)||(email.errors&&email.touched)" class="invalid">
+            <p *ngIf="email.errors['required']" class="invalid-feedback">email is required</p>
+            <p *ngIf="email.errors['email']" class="invalid-feedback">invalid email</p>
+        </div>
+        <div class="form-group">
+            <label for="password" class="input-group-text">
+                <span class="fa-solid fa-lock"></span>
+            </label>
+            <input [type]="typepassword" class="form-control"  placeholder="password" #password="ngModel" ngModel name="password" id="password" required
+            [ngClass]="{'is-invalid':(password.errors&&password.touched)||(password.errors&&loginform.submitted)}"/>
+            <button (click)="changetypepassword()"><i class="fa-solid fa-eye"></i></button>
+        </div>
+        <div *ngIf="(password.errors&&loginform.submitted)||(password.errors&&password.touched)" class="invalid">
+            <p *ngIf="password.errors['required']" class="invalid-feedback">password is required</p>
+        </div>
+        <div class="form-group check-sec">
+            <label for="rememberme">
+                <input type="checkbox" name="rememberme" id="rememberme"/>
+                <div class="remebercheck">
+                </div>
+                remember me
+            </label>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Login" class="loginbtn"/>
+        </div>
+    </form>
+</div>

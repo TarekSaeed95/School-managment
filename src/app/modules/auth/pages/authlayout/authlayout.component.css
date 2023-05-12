@@ -1,0 +1,90 @@
+.container{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.705);
+}
+.wrap-container{
+    width: 500px;
+    background-color: white;
+    margin: auto;
+    border-radius: 0.25em;
+}
+.options ul{
+    display: flex;
+    list-style: none;
+}
+.options ul li{
+    width: 50%;
+    text-align: center;
+    padding: 0;
+}
+.options ul li button{
+    display: block;
+    width: 100%;
+    height: 70px;
+    background: #FFF;
+    color: #505260;
+    border-radius: 0 0.25em 0 0;
+}
+.loginbtn:before{
+    content: "";
+    background: url(../../../../../assets/images/login.png) no-repeat center center;
+    background-size: 100%;
+    line-height: 1;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    margin-right: 3px;
+    height: 24px;
+    width: 22px;
+}
+.registerbtn:before{
+    content: "";
+    background: url(../../../../../assets/images/user.png) no-repeat center center;
+    background-size: 100%;
+    line-height: 1;
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    margin-right: 3px;
+    height: 24px;
+    width: 22px;
+}
+.active{
+    background-color: #d2d8d8!important;
+    color: #809191!important;
+}
+.closebtn{
+    width: 500px;
+    margin: auto;
+    text-align: right;
+}
+.closebtn button{
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+.closebtn button i{
+    color: white;
+    font-size: 25px;
+    padding: 10px;
+}
+.forgetlink{
+    width: 500px;
+    margin: auto;
+    color: white; 
+}
+.forgetlink button{
+    display: block;
+    margin: auto;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+
+}
