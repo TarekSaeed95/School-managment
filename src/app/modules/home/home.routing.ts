@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomePageComponent } from './page/home-page.component';
+import { HomeComponent } from './home.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 export const routes: Routes = [
   {
@@ -8,10 +9,16 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
+{
+  path:'home',
+  component:HomeComponent,
+  children:[   
   {
-    path: 'home',
-    component: HomePageComponent
+    path: '',
+    component: MainpageComponent
   },
+  ]
+},
 ];
 
 @NgModule({
