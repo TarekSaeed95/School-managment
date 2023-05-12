@@ -4,7 +4,7 @@
   position: relative;
   overflow: hidden;
   background-repeat: no-repeat;
-  background-image: url(../../../../../../assets/images/wave.svg);
+  background-image: url(../../../../../../../assets/images/wave.svg);
   background-size: cover;
 }
 .bright-future .container {

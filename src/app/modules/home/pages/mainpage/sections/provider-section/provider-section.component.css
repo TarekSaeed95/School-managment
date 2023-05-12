@@ -29,7 +29,7 @@ h5{
     text-align: center;
 }
 .provider_section{
-    background-image: url('../../../../../../assets/images/what-we-provide-bg.jpg') !important;
+    background-image: url('../../../../../../../assets/images/what-we-provide-bg.jpg') !important;
 }
 .provider_header_icon{
     display: inline-block;
@@ -84,22 +84,22 @@ span.fa, i.fa {
     background-size: cover;
 }
 .c1 .icon-wrap{
-    background-image: url('../../../../../../assets/images/what-we-provide-container5.png');
+    background-image: url('../../../../../../../assets/images/what-we-provide-container5.png');
 }
 .c2 .icon-wrap{
-    background-image: url('../../../../../../assets/images/what-we-provide-container4.png'); 
+    background-image: url('../../../../../../../assets/images/what-we-provide-container4.png'); 
 }
 .c3 .icon-wrap{
-    background-image: url('../../../../../../assets/images/what-we-provide-container6.png');
+    background-image: url('../../../../../../../assets/images/what-we-provide-container6.png');
 }
 .c4 .icon-wrap{
-    background-image: url('../../../../../../assets/images/what-we-provide-container1.png');
+    background-image: url('../../../../../../../assets/images/what-we-provide-container1.png');
 }
 .c5 .icon-wrap{
-    background-image: url('../../../../../../assets/images/what-we-provide-container2.png');
+    background-image: url('../../../../../../../assets/images/what-we-provide-container2.png');
 }
 .c6 .icon-wrap{
-    background-image: url('../../../../../../assets/images/what-we-provide-container3.png');
+    background-image: url('../../../../../../../assets/images/what-we-provide-container3.png');
 }
 .type-image{
     width: 40%;

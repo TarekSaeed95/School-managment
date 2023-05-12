@@ -22,12 +22,6 @@ h5{
     background-repeat: no-repeat !important;
     background-size: cover !important;
 }
-.activity-video{
-    width: 50%;
-}
-.activity-topic{
-    width: 40%;
-}
 .activity-video .header h1{
     font-size: 40px;
     color: #333333;
@@ -79,7 +73,7 @@ input[type="checkbox"]:checked ~ .topic-body{
     padding: 0.4rem;
 }
 .video{
-    background-image: url(../../../../../../assets/images/rand2.jpg);
+    background-image: url(../../../../../../../assets/images/rand2.jpg);
     position: relative;
     width: 100%;
     height: 40vh;
@@ -139,6 +133,12 @@ svg#play:hover #triangle {
     .row{
         display: flex;
         justify-content: space-between;
+    }
+    .activity-video{
+        width: 50%;
+    }
+    .activity-topic{
+        width: 40%;
     }
 
 }

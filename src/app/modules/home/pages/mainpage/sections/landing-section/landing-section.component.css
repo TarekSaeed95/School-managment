@@ -1,6 +1,6 @@
 /* .landing-page */
 .landing-page{
-  background-image: url(../../../../../../assets/images/LandingPhoto.jpg);
+  background-image: url(../../../../../../../assets/images/LandingPhoto.jpg);
   height: calc(100vh - 90px - 60px );
   background-size: cover;
   background-repeat: no-repeat;
