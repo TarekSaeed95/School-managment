@@ -7,14 +7,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class AuthlayoutComponent implements OnInit{
   @Input() data: any;
-  @Input() close: any;
   @Output()closeevent:EventEmitter<boolean>=new EventEmitter(false);
   flag=false;
+  loginflag=true;
   ngOnInit(): void {
     if(this.data.page==="login")this.flag=true ; else this.flag=false;
   }
   showlogin(){
     this.flag=true;
+    this.loginflag=true;
   }
   showregister(){
     this.flag=false
@@ -22,5 +23,7 @@ export class AuthlayoutComponent implements OnInit{
   closeauth(){
     this.closeevent.emit(true);
   }
-  forgetpassword(){}
+  forgetpassword(){
+    this.loginflag=!this.loginflag
+  }
 }

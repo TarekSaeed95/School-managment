@@ -20,14 +20,18 @@
             </ul>
         </div>
         <ng-container *ngIf="flag">
-            <app-login></app-login>
+            <app-login *ngIf="loginflag"></app-login>
+            <app-forgetPassword *ngIf="!loginflag"></app-forgetPassword>
         </ng-container>
         <ng-container *ngIf="!flag">
             <app-register></app-register>
         </ng-container>
     </div>
     <div class="forgetlink">
-        <button *ngIf="flag" (click)="forgetpassword()">Forget Your Password?</button>
+        <button *ngIf="flag&&loginflag" (click)="forgetpassword()">Forget Your Password?</button>
+    </div>
+    <div class="loginlink">
+        <button *ngIf="flag&&!loginflag" (click)="forgetpassword()">Back to login?</button>
     </div>
 </div>
 

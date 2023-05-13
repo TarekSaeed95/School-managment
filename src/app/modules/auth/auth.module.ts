@@ -6,6 +6,8 @@ import { ChangepasswordComponent } from './pages/changepassword/changepassword.c
 import { LoginComponent } from './pages/login/login.component';
 import { AuthlayoutComponent } from './pages/authlayout/authlayout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ForgetPasswordComponent } from './pages/forgetPassword/forgetPassword.component';
+import { MessagerespnceComponent } from './pages/messagerespnce/messagerespnce.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     ChangepasswordComponent,
-    AuthlayoutComponent
+    AuthlayoutComponent,
+    ForgetPasswordComponent,
+    MessagerespnceComponent
   ],
   imports: [
     CommonModule,

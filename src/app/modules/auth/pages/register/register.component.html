@@ -1,4 +1,5 @@
 <div>
+<ng-container *ngIf="formresponce==false">
     <form (ngSubmit)="register()" [formGroup]="registerform">
         <div class="row">
             <div class="col">
@@ -50,8 +51,18 @@
         <div *ngIf="(parentemailcontrol.errors&&submitted)||(parentemailcontrol.errors&&parentemailcontrol.touched)" class="invalid">
             <p *ngIf="parentemailcontrol.errors['required']" class="invalid-feedback">parent email is required</p>
         </div>
-        <div class="form-group">
-            <input type="submit" value="Register" class="registerbtn"/>
+        <div class="form-group" [ngClass]="{'loading':loadflag&&registerform.valid}">
+            <input type="submit" value="Register" class="registerbtn" [disabled]="loadflag" />
         </div>
     </form>
+</ng-container>
 </div>
+<ng-container *ngIf="formresponce==true">
+    <div *ngIf="typemess=='success'then success;else failed"></div>
+    <ng-template #success>
+        <app-messagerespnce [message]="message" [type]="typemess"></app-messagerespnce>
+    </ng-template>
+    <ng-template #failed>
+        <app-messagerespnce [message]="message" [type]="typemess"></app-messagerespnce>
+    </ng-template>
+</ng-container>
