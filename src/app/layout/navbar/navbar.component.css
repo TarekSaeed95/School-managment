@@ -27,6 +27,10 @@ header .container section:last-of-type::before{
 }
 header .container section:last-of-type p {
   cursor: pointer;
+  color: white;
+}
+header .container section  p a {
+  color: white;
 }
 @media (max-width: 767px) {
   header .container{

@@ -1,0 +1,18 @@
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.form-group{
+    margin: auto;
+}
+.col{
+    width: 45%;
+    margin: 0;
+}
+@media screen and (max-width: 700px){
+    .col{
+        width: 100%;
+    }
+}

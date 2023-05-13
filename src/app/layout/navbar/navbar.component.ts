@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
+  @Output()openauthlayout:EventEmitter<any>=new EventEmitter();
+  public openlogin(){
+    this.openauthlayout.emit({open:true,page:'login'})
+  }
+  public openregister(){
+    this.openauthlayout.emit({open:true,page:'register'})
+  }
 }

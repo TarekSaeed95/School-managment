@@ -1,0 +1,46 @@
+input[type=checkbox]{
+    display: inline-block;
+    margin: 0 1rem ;
+}
+.check-sec{
+    line-height: 0;
+}
+.remebercheck{
+    position: absolute;
+    top: 0px;
+    padding:0.6rem;
+    border: 1px solid #cbc6c69e;
+    background-color: white;
+}
+#rememberme{
+    margin: 0px;
+    margin-right: 0.6rem;
+    padding: 0px;
+    height: 0.9375rem;
+}
+.remebercheck + label{
+    padding-left: 0.3rem;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 1.4rem;
+}
+#rememberme:checked + .remebercheck{
+    background-color: #0075ff;
+}
+#rememberme:checked + .remebercheck::after{
+    content: "";
+    position: absolute;
+    display: block;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+
+}
+

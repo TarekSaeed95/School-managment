@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="closebtn">
+    <button (click)="closeauth()">
+        <i class="fa fa-xmark"></i>
+    </button>
+    </div>
+    <div class="wrap-container">
+        <div class="options">
+            <ul>
+                <li>
+                    <button (click)="showlogin()" [ngClass]="{'active':!flag}"  class="loginbtn">
+                        login
+                    </button>
+                </li>
+                <li>
+                    <button (click)="showregister()" [ngClass]="{'active':flag}" class="registerbtn">
+                        register
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <ng-container *ngIf="flag">
+            <app-login *ngIf="loginflag"></app-login>
+            <app-forgetPassword *ngIf="!loginflag"></app-forgetPassword>
+        </ng-container>
+        <ng-container *ngIf="!flag">
+            <app-register></app-register>
+        </ng-container>
+    </div>
+    <div class="forgetlink">
+        <button *ngIf="flag&&loginflag" (click)="forgetpassword()">Forget Your Password?</button>
+    </div>
+    <div class="loginlink">
+        <button *ngIf="flag&&!loginflag" (click)="forgetpassword()">Back to login?</button>
+    </div>
+</div>
+
