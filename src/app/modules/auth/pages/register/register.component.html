@@ -16,7 +16,9 @@
                         [ngClass]="{'is-invalid':(stdFnameControl.errors&&stdFnameControl.touched)||(stdFnameControl.errors&&submitted)}"/>
                     </div>
                     <div *ngIf="(stdFnameControl.errors&&submitted)||(stdFnameControl.errors&&stdFnameControl.touched)" class="invalid">
-                                <p *ngIf="stdFnameControl.errors['required']" class="invalid-feedback">student first name is required</p>
+                        <p *ngIf="stdFnameControl.errors['required']" class="invalid-feedback">student first name is required</p>
+                        <p *ngIf="stdFnameControl.errors['minlength']" class="invalid-feedback">min length is 3 char</p>
+                        <p *ngIf="stdFnameControl.errors['maxlength']" class="invalid-feedback">max length is 10 char</p>
                     </div>
                 </div>
                 <div class="col">
@@ -30,6 +32,9 @@
                     </div>
                     <div *ngIf="(patFNameControl.errors&&submitted)||(patFNameControl.errors&&patFNameControl.touched)" class="invalid">
                         <p *ngIf="patFNameControl.errors['required']" class="invalid-feedback">parent name is required</p>
+                        <p *ngIf="patFNameControl.errors['minlength']" class="invalid-feedback">minlength is 3 char</p>
+                        <p *ngIf="patFNameControl.errors['maxlength']" class="invalid-feedback">maxlength is 15 char</p>
+
                     </div>
                 </div>
             </div>
@@ -42,8 +47,8 @@
                         <select class="form-control"  
                         placeholder="gender" id="stdgender" formControlName="studentGender"
                         [ngClass]="{'is-invalid':(stdGenderControl.errors&&stdGenderControl.touched)||(stdGenderControl.errors&&submitted)}">
-                            <option value=0>Female</option>
-                            <option value=1>Male</option>
+                            <option value=0>Male</option>
+                            <option value=1>Female</option>
                         </select>
                     </div>
                     <div *ngIf="(stdGenderControl.errors&&submitted)||(stdGenderControl.errors&&stdGenderControl.touched)" class="invalid">
@@ -75,10 +80,10 @@
                         [ngClass]="{'is-invalid':(stdPhoneControl.errors&&stdPhoneControl.touched)||(stdPhoneControl.errors&&submitted)}"/>
                     </div>
                     <div *ngIf="(stdPhoneControl.errors&&submitted)||(stdPhoneControl.errors&&stdPhoneControl.touched)" class="invalid">
-                                <p *ngIf="stdPhoneControl.errors['required']" class="invalid-feedback">phone is required</p>
+                        <p *ngIf="stdPhoneControl.errors['required']" class="invalid-feedback">phone is required</p>
+                        <p *ngIf="stdPhoneControl.errors['pattern']" class="invalid-feedback">invalid phone</p>
                     </div>
                 </div>
-
                 <div class="col">
                     <div class="form-group">
                         <label for="parentphone" class="input-group-text">
@@ -90,6 +95,7 @@
                     </div>
                     <div *ngIf="(patphoneControl.errors&&submitted)||(patphoneControl.errors&&patphoneControl.touched)" class="invalid">
                         <p *ngIf="patphoneControl.errors['required']" class="invalid-feedback">parent phone is required</p>
+                        <p *ngIf="patphoneControl.errors['pattern']" class="invalid-feedback">phone invalid</p>
                     </div>
                 </div>
             </div>
@@ -102,18 +108,21 @@
                 [ngClass]="{'is-invalid':(addressControl.errors&&addressControl.touched)||(addressControl.errors&&submitted)}"/>
             </div>
             <div *ngIf="(addressControl.errors&&submitted)||(addressControl.errors&&addressControl.touched)" class="invalid">
-                        <p *ngIf="addressControl.errors['required']" class="invalid-feedback">address is required</p>
+                <p *ngIf="addressControl.errors['required']" class="invalid-feedback">address is required</p>
+                <p *ngIf="addressControl.errors['minlength']" class="invalid-feedback">minlength is 5 char</p>
+                <p *ngIf="addressControl.errors['maxlength']" class="invalid-feedback">maxlength is 15 char</p>
             </div>
             <div class="form-group">
-                        <label for="stdemail" class="input-group-text">
-                            <span class="fa-sharp fa-solid fa-mail-bulk"></span>
-                        </label>
-                        <input type="email" class="form-control"   
-                        placeholder="student email"  id="stdemail" formControlName="studentEmail"
-                        [ngClass]="{'is-invalid':(stdEmailControl.errors&&stdEmailControl.touched)||(stdEmailControl.errors&&submitted)}"/>
+                <label for="stdemail" class="input-group-text">
+                    <span class="fa-sharp fa-solid fa-mail-bulk"></span>
+                </label>
+                <input type="email" class="form-control"   
+                placeholder="student email"  id="stdemail" formControlName="studentEmail"
+                [ngClass]="{'is-invalid':(stdEmailControl.errors&&stdEmailControl.touched)||(stdEmailControl.errors&&submitted)}"/>
             </div>
             <div *ngIf="(stdEmailControl.errors&&submitted)||(stdEmailControl.errors&&stdEmailControl.touched)" class="invalid">
-                        <p *ngIf="stdEmailControl.errors['required']" class="invalid-feedback">student email is required</p>
+                <p *ngIf="stdEmailControl.errors['required']" class="invalid-feedback">student email is required</p>
+                <p *ngIf="stdEmailControl.errors['email']" class="invalid-feedback">email is invalid</p>
             </div>
             <div class="form-group">
                 <label for="parentemail" class="input-group-text">
@@ -125,6 +134,7 @@
             </div>
             <div *ngIf="(patEmailControl.errors&&submitted)||(patEmailControl.errors&&patEmailControl.touched)" class="invalid">
                 <p *ngIf="patEmailControl.errors['required']" class="invalid-feedback">parent email is required</p>
+                <p *ngIf="patEmailControl.errors['required']" class="invalid-feedback">email is invalid</p>
             </div>
             <div class="form-group">
                 <label for="password" class="input-group-text">
@@ -136,6 +146,10 @@
             </div>
             <div *ngIf="(passwordControl.errors&&submitted)||(passwordControl.errors&&passwordControl.touched)" class="invalid">
                 <p *ngIf="passwordControl.errors['required']" class="invalid-feedback">password is required</p>
+                <p *ngIf="passwordControl.errors['minlength']" class="invalid-feedback">minlength is 8 char</p>
+                <p *ngIf="passwordControl.errors['pattern']" class="invalid-feedback">password must be contain<br>
+                                                                                      lower and uper case char<br>
+                                                                                     [@|#|$|^|&]</p>
             </div>
             <div class="row">
                 <div class="col studentimage">

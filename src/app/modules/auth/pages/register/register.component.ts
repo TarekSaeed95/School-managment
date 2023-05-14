@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { request } from 'src/app/data/request';
 import { AuthserviceService } from 'src/app/services/authservice.service';
 
 @Component({
@@ -17,18 +18,18 @@ export class RegisterComponent {
   patimage:any="../../../../../assets/images/parentreg.png"
 
   registerform:FormGroup=new FormGroup({
-    studentFirstName: new FormControl('',[Validators.required]),
-    studentEmail: new FormControl('',[Validators.required]),
+    studentFirstName: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
+    studentEmail: new FormControl('',[Validators.required,Validators.email]),
     studentGender: new FormControl(0,[Validators.required]),
-    studentPhone: new FormControl('',[Validators.required]),
+    studentPhone: new FormControl('',[Validators.required,Validators.pattern("^(010|011|012|015)[0-9]{8}$")]),
     studentBirthDate: new FormControl('',[Validators.required]),
-    address: new FormControl('',[Validators.required]),
-    parentFullName: new FormControl('',[Validators.required]),
-    parentEmail: new FormControl('',[Validators.required]),
-    parentPhone: new FormControl('',[Validators.required]),
+    address: new FormControl('',[Validators.required,Validators.minLength(5),Validators.maxLength(25)]),
+    parentFullName: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(15)]),
+    parentEmail: new FormControl('',[Validators.required,Validators.email]),
+    parentPhone: new FormControl('',[Validators.required,Validators.pattern("^(010|011|012|015)[0-9]{8}$")]),
     studentPhotoUrl: new FormControl('',[]),
     identityParentPhotoUrl: new FormControl('',[]),
-    password: new FormControl('',[Validators.required])
+    password: new FormControl('',[Validators.required,Validators.minLength(8)])
   });
   constructor(private authservice:AuthserviceService){}
   get stdFnameControl(){
@@ -82,8 +83,11 @@ export class RegisterComponent {
     this.submitted=true;
     if(this.registerform.valid){
         this.loadflag=true;
-        console.log(this.registerform.value)
-        this.authservice.createrequest(this.registerform.value).subscribe(
+        let user:request={
+          ...this.registerform.value
+        }
+        user.studentGender=+user.studentGender;
+        this.authservice.createrequest(user).subscribe(
         val=>{
           console.log(val);
           this.formresponce=true;
