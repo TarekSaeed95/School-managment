@@ -4,18 +4,17 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './pages/register/register.component';
 import { ChangepasswordComponent } from './pages/changepassword/changepassword.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AuthlayoutComponent } from './pages/authlayout/authlayout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgetPasswordComponent } from './pages/forgetPassword/forgetPassword.component';
 import { MessagerespnceComponent } from './pages/messagerespnce/messagerespnce.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { AuthserviceService } from '../../services/authservice.service';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     ChangepasswordComponent,
-    AuthlayoutComponent,
     ForgetPasswordComponent,
     MessagerespnceComponent
   ],
@@ -23,7 +22,8 @@ import { MessagerespnceComponent } from './pages/messagerespnce/messagerespnce.c
     CommonModule,
     AuthRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   bootstrap:[LoginComponent]
 })

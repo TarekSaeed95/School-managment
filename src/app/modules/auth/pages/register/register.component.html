@@ -1,62 +1,179 @@
-<div>
 <ng-container *ngIf="formresponce==false">
-    <form (ngSubmit)="register()" [formGroup]="registerform">
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="stdfname" class="input-group-text">
-                        <span class="fa-sharp fa-solid fa-user"></span>
-                    </label>
-                    <input type="text" class="form-control"   
-                    placeholder="first name" id="stdfname" formControlName="studentfname"
-                    [ngClass]="{'is-invalid':(studentfnamecontrol.errors&&studentfnamecontrol.touched)||(studentfnamecontrol.errors&&submitted)}"/>
+    <div class="container">
+        <div class="pic">
+            <i class="fas fa-user"></i>
+        </div>
+        <h2 class="title">Register</h2>
+        <form (ngSubmit)="register()" [formGroup]="registerform" class="form">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="stdfname" class="input-group-text">
+                            <span class="fa-sharp fa-solid fa-user"></span>
+                        </label>
+                        <input type="text" class="form-control"   
+                        placeholder="student name" id="stdfname" formControlName="studentFirstName"
+                        [ngClass]="{'is-invalid':(stdFnameControl.errors&&stdFnameControl.touched)||(stdFnameControl.errors&&submitted)}"/>
+                    </div>
+                    <div *ngIf="(stdFnameControl.errors&&submitted)||(stdFnameControl.errors&&stdFnameControl.touched)" class="invalid">
+                                <p *ngIf="stdFnameControl.errors['required']" class="invalid-feedback">student first name is required</p>
+                    </div>
                 </div>
-                <div *ngIf="(studentfnamecontrol.errors&&submitted)||(studentfnamecontrol.errors&&studentfnamecontrol.touched)" class="invalid">
-                    <p *ngIf="studentfnamecontrol.errors['required']" class="invalid-feedback">student first name is required</p>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="parentname" class="input-group-text">
+                            <span class="fa-sharp fa-solid fa-mail-user"></span>
+                        </label>
+                        <input type="text" class="form-control"   
+                        placeholder="parent name" id="parentname" formControlName="parentFullName"
+                        [ngClass]="{'is-invalid':(patFNameControl.errors&&patFNameControl.touched)||(patFNameControl.errors&&submitted)}"/>
+                    </div>
+                    <div *ngIf="(patFNameControl.errors&&submitted)||(patFNameControl.errors&&patFNameControl.touched)" class="invalid">
+                        <p *ngIf="patFNameControl.errors['required']" class="invalid-feedback">parent name is required</p>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="stdlname" class="input-group-text">
-                        <span class="fa-sharp fa-solid fa-child"></span>
-                    </label>
-                    <input type="text" class="form-control"   
-                    placeholder="Age"  id="stdlname" formControlName="studentage"
-                    [ngClass]="{'is-invalid':(studentagecontrol.errors&&studentagecontrol.touched)||(studentagecontrol.errors&&submitted)}"/>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="stdgender" class="input-group-text">
+                            <span class="fa-sharp fa-solid fa-child"></span>
+                        </label>
+                        <select class="form-control"  
+                        placeholder="gender" id="stdgender" formControlName="studentGender"
+                        [ngClass]="{'is-invalid':(stdGenderControl.errors&&stdGenderControl.touched)||(stdGenderControl.errors&&submitted)}">
+                            <option value=0>Female</option>
+                            <option value=1>Male</option>
+                        </select>
+                    </div>
+                    <div *ngIf="(stdGenderControl.errors&&submitted)||(stdGenderControl.errors&&stdGenderControl.touched)" class="invalid">
+                        <p *ngIf="stdGenderControl.errors['required']" class="invalid-feedback">gender is required</p>
+                    </div>
                 </div>
-                <div *ngIf="(studentagecontrol.errors&&submitted)||(studentagecontrol.errors&&studentagecontrol.touched)" class="invalid">
-                    <p *ngIf="studentagecontrol.errors['required']" class="invalid-feedback">student age is required</p>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="birthdate" class="input-group-text">
+                            <span class="fa-sharp fa-solid fa-birthday-cake"></span>
+                        </label>
+                        <input type="date" class="form-control"   
+                        placeholder="Birth Date" id="birthdate" formControlName="studentBirthDate"
+                        [ngClass]="{'is-invalid':(stdBDControl.errors&&stdBDControl.touched)||(stdBDControl.errors&&submitted)}"/>
+                    </div>
+                    <div *ngIf="(stdBDControl.errors&&submitted)||(stdBDControl.errors&&stdBDControl.touched)" class="invalid">
+                        <p *ngIf="stdBDControl.errors['required']" class="invalid-feedback">BirthDate is required</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="parentname" class="input-group-text">
-                <span class="fa-sharp fa-solid fa-user"></span>
-            </label>
-            <input type="text" class="form-control"   
-            placeholder="parent name" id="parentname" formControlName="parentname"
-            [ngClass]="{'is-invalid':(parentnamecontrol.errors&&parentnamecontrol.touched)||(parentnamecontrol.errors&&submitted)}"/>
-        </div>
-        <div *ngIf="(parentnamecontrol.errors&&submitted)||(parentnamecontrol.errors&&parentnamecontrol.touched)" class="invalid">
-            <p *ngIf="parentnamecontrol.errors['required']" class="invalid-feedback">parent name is required</p>
-        </div>
-        <div class="form-group">
-            <label for="parentemail" class="input-group-text">
-                <span class="fa-sharp fa-solid fa-mail-bulk"></span>
-            </label>
-            <input type="email" class="form-control"   
-            placeholder="parent email" id="parentemail" formControlName="parentemail"
-            [ngClass]="{'is-invalid':(parentemailcontrol.errors&&parentemailcontrol.touched)||(parentemailcontrol.errors&&submitted)}"/>
-        </div>
-        <div *ngIf="(parentemailcontrol.errors&&submitted)||(parentemailcontrol.errors&&parentemailcontrol.touched)" class="invalid">
-            <p *ngIf="parentemailcontrol.errors['required']" class="invalid-feedback">parent email is required</p>
-        </div>
-        <div class="form-group" [ngClass]="{'loading':loadflag&&registerform.valid}">
-            <input type="submit" value="Register" class="registerbtn" [disabled]="loadflag" />
-        </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="stdphone" class="input-group-text">
+                            <span class="fa-sharp fa-solid fa-phone"></span>
+                        </label>
+                        <input type="text" class="form-control"   
+                        placeholder="student phone" id="stdphone" formControlName="studentPhone"
+                        [ngClass]="{'is-invalid':(stdPhoneControl.errors&&stdPhoneControl.touched)||(stdPhoneControl.errors&&submitted)}"/>
+                    </div>
+                    <div *ngIf="(stdPhoneControl.errors&&submitted)||(stdPhoneControl.errors&&stdPhoneControl.touched)" class="invalid">
+                                <p *ngIf="stdPhoneControl.errors['required']" class="invalid-feedback">phone is required</p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="form-group">
+                        <label for="parentphone" class="input-group-text">
+                            <span class="fa-sharp fa-solid fa-mail-bulk"></span>
+                        </label>
+                        <input type="text" class="form-control"   
+                        placeholder="parent phone" id="parentphone" formControlName="parentPhone"
+                        [ngClass]="{'is-invalid':(patphoneControl.errors&&patphoneControl.touched)||(patphoneControl.errors&&submitted)}"/>
+                    </div>
+                    <div *ngIf="(patphoneControl.errors&&submitted)||(patphoneControl.errors&&patphoneControl.touched)" class="invalid">
+                        <p *ngIf="patphoneControl.errors['required']" class="invalid-feedback">parent phone is required</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address" class="input-group-text">
+                    <span class="fa-sharp fa-solid fa-home"></span>
+                </label>
+                <input type="text" class="form-control"   
+                placeholder="home address" id="address" formControlName="address"
+                [ngClass]="{'is-invalid':(addressControl.errors&&addressControl.touched)||(addressControl.errors&&submitted)}"/>
+            </div>
+            <div *ngIf="(addressControl.errors&&submitted)||(addressControl.errors&&addressControl.touched)" class="invalid">
+                        <p *ngIf="addressControl.errors['required']" class="invalid-feedback">address is required</p>
+            </div>
+            <div class="form-group">
+                        <label for="stdemail" class="input-group-text">
+                            <span class="fa-sharp fa-solid fa-mail-bulk"></span>
+                        </label>
+                        <input type="email" class="form-control"   
+                        placeholder="student email"  id="stdemail" formControlName="studentEmail"
+                        [ngClass]="{'is-invalid':(stdEmailControl.errors&&stdEmailControl.touched)||(stdEmailControl.errors&&submitted)}"/>
+            </div>
+            <div *ngIf="(stdEmailControl.errors&&submitted)||(stdEmailControl.errors&&stdEmailControl.touched)" class="invalid">
+                        <p *ngIf="stdEmailControl.errors['required']" class="invalid-feedback">student email is required</p>
+            </div>
+            <div class="form-group">
+                <label for="parentemail" class="input-group-text">
+                    <span class="fa-sharp fa-solid fa-mail-bulk"></span>
+                </label>
+                <input type="email" class="form-control"   
+                placeholder="parent email" id="parentemail" formControlName="parentEmail"
+                [ngClass]="{'is-invalid':(patEmailControl.errors&&patEmailControl.touched)||(patEmailControl.errors&&submitted)}"/>
+            </div>
+            <div *ngIf="(patEmailControl.errors&&submitted)||(patEmailControl.errors&&patEmailControl.touched)" class="invalid">
+                <p *ngIf="patEmailControl.errors['required']" class="invalid-feedback">parent email is required</p>
+            </div>
+            <div class="form-group">
+                <label for="password" class="input-group-text">
+                    <span class="fa-sharp fa-solid fa-lock"></span>
+                </label>
+                <input type="password" class="form-control"   
+                placeholder="password" id="password" formControlName="password"
+                [ngClass]="{'is-invalid':(passwordControl.errors&&passwordControl.touched)||(passwordControl.errors&&submitted)}"/>
+            </div>
+            <div *ngIf="(passwordControl.errors&&submitted)||(passwordControl.errors&&passwordControl.touched)" class="invalid">
+                <p *ngIf="passwordControl.errors['required']" class="invalid-feedback">password is required</p>
+            </div>
+            <div class="row">
+                <div class="col studentimage">
+                    <label for="stdphoto">
+                        <img [src]="stdimage"/>
+                        <p>student image</p>
+                    </label>
+                    <div class="form-group">
+                        <input type="file" class="form-control" (change)="changephoto($event,0)"
+                        placeholder="personal photo" id="stdphoto" formControlName="studentPhotoUrl"
+                        [ngClass]="{'is-invalid':(stdPhotoControl.errors&&stdPhotoControl.touched)||(stdPhotoControl.errors&&submitted)}"/>
+                    </div>
+                    <div *ngIf="(stdPhotoControl.errors&&submitted)||(stdPhotoControl.errors&&stdPhotoControl.touched)" class="invalid">
+                        <p *ngIf="stdPhotoControl.errors['required']" class="invalid-feedback">parent email is required</p>
+                    </div>
+                </div>
+                <div class="col parentimage">
+                    <label for="parentphoto">
+                        <img [src]="patimage"/>
+                        <p>parent photo</p>
+                    </label>
+                    <div class="form-group">
+                        <input type="file" class="form-control"   (change)="changephoto($event,1)"
+                        placeholder="parent photo" id="parentphoto" formControlName="identityParentPhotoUrl"
+                        [ngClass]="{'is-invalid':(patPhotoControl.errors&&patPhotoControl.touched)||(patPhotoControl.errors&&submitted)}"/>
+                    </div>
+                    <div *ngIf="(patPhotoControl.errors&&submitted)||(patPhotoControl.errors&&patPhotoControl.touched)" class="invalid">
+                        <p *ngIf="patPhotoControl.errors['required']" class="invalid-feedback">parent photo is required</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" [ngClass]="{'loading':loadflag&&registerform.valid}">
+                <input type="submit" value="Register" class="registerbtn" [disabled]="loadflag" />
+            </div>
+            <p style="text-align: center;">You Have Account? <a [routerLink]="'../login'">login</a></p>
     </form>
+    </div>
 </ng-container>
-</div>
 <ng-container *ngIf="formresponce==true">
     <div *ngIf="typemess=='success'then success;else failed"></div>
     <ng-template #success>
@@ -66,3 +183,4 @@
         <app-messagerespnce [message]="message" [type]="typemess"></app-messagerespnce>
     </ng-template>
 </ng-container>
+

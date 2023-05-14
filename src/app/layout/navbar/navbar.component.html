@@ -3,17 +3,21 @@
       <section>
           <p class="number">
               <i class="fa-solid fa-phone"></i>
-              123456789
+              123456789q    
           </p>
           <p class="email">
               <i class="fa-regular fa-envelope"></i>
               smartschool@gmail.com
           </p>
       </section>
-      <section>
+
+      <section *ngIf="logoutflag">
           <p (click)="openlogin()">Login</p>
           <p (click)="openregister()">Register</p>
       </section>
+      <div *ngIf="!logoutflag">
+        <p (click)="logout()">Logout</p>
+      </div>
   </div>
 </header>
 <nav>
