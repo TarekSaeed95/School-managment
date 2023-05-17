@@ -9,6 +9,8 @@ import { TeachersComponent } from './pages/mainpage/sections/teachers/teachers.c
 import { VideoComponent } from './pages/mainpage/sections/video/video.component';
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { CommonModule } from '@angular/common';
+import { HomeComponent } from './home.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -20,11 +22,11 @@ import { CommonModule } from '@angular/common';
                  ProviderSectionComponent,
                  TeachersComponent,
                  VideoComponent,
-                 MainpageComponent
+                 MainpageComponent,
+                 HomeComponent
                  ],
-  imports: [CommonModule,HomeRoutingModule],
+  imports: [CommonModule,HomeRoutingModule,SharedModule],
   exports: [],
-  providers: [],
-  bootstrap:[MainpageComponent]
+  providers: []
 })
 export class HomeModule {}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgetPassword',
@@ -10,6 +11,7 @@ export class ForgetPasswordComponent {
   formresponce:boolean=false;
   message:string='';
   typemess:string=''
+  constructor(private router:Router){}
   changepassword(passwordform:any){
     if(passwordform.valid){
       this.loadflag=true;
@@ -19,5 +21,8 @@ export class ForgetPasswordComponent {
         this.message='check your email'
       },1000);
     }
+  }
+  gotologin(){
+    this.router.navigate(['login']);
   }
 }
