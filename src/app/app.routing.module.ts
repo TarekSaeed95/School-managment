@@ -9,8 +9,29 @@ const routes: Routes = [
   {
     path:'',
     loadChildren: () =>
+            import('./modules/home/home.module').then(m => m.HomeModule)   
+  },
+  {
+    path:'home',
+    loadChildren: () =>
             import('./modules/home/home.module').then(m => m.HomeModule)
-        },
+  },
+  { path:'admin',
+    loadChildren: () =>
+            import('./modules/admin/admin.module').then(m => m.AdminModule) 
+  },
+  { path:'teacher',
+    loadChildren: () =>
+            import('./modules/teacher/teacher.module').then(m => m.TeacherModule) 
+  },
+  { path:'student',
+    loadChildren: () =>
+            import('./modules/student/student.module').then(m => m.StudentModule) 
+  },
+  { path:'parent',
+    loadChildren: () =>
+            import('./modules/parent/parent.module').then(m => m.ParentModule)
+  }   
   // {
   //   path: '',
   //   redirectTo: '/auth/login',
