@@ -4,27 +4,31 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterComponent } from './pages/register/register.component';
 import { ChangepasswordComponent } from './pages/changepassword/changepassword.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AuthlayoutComponent } from './pages/authlayout/authlayout.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ForgetPasswordComponent } from './pages/forgetPassword/forgetPassword.component';
 import { MessagerespnceComponent } from './pages/messagerespnce/messagerespnce.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { AuthserviceService } from '../../services/authservice.service';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { LayoutauthComponent } from './pages/layoutauth/layoutauth.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     ChangepasswordComponent,
-    AuthlayoutComponent,
     ForgetPasswordComponent,
-    MessagerespnceComponent
+    MessagerespnceComponent,
+    LayoutauthComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    SharedModule
   ],
-  bootstrap:[LoginComponent]
+  bootstrap:[    LayoutauthComponent  ]
 })
 export class AuthModule { }
