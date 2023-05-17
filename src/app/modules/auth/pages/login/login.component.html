@@ -14,7 +14,7 @@
         </div>
         <div *ngIf="(emailcontrol.errors&&form.submitted)||(emailcontrol.errors&&emailcontrol.touched)" class="invalid">
             <p *ngIf="emailcontrol.errors['required']" class="invalid-feedback">email is required</p>
-            <p *ngIf="emailcontrol.errors['emailcontrol']" class="invalid-feedback">invalid email</p>
+            <p *ngIf="emailcontrol.errors['email']" class="invalid-feedback">invalid email</p>
         </div>
         <div class="form-group">
             <label for="password" class="input-group-text">

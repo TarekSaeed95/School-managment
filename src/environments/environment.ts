@@ -1,3 +1,5 @@
 export const environment = {
-     URL:"https://localhost:44309/api/"
+     URL:"https://localhost:7038/api/",
+     imgeurl:"https://localhost:7038/"
+
 };

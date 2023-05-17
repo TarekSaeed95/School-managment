@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
     }
   }
   login(){
-    console.log(this.remember)
     if(this.loginform.valid){
       this.loadflag=true;
       let user={email:this.loginform.value.email,password:this.loginform.value.password}

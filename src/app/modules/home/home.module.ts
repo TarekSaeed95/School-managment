@@ -10,9 +10,7 @@ import { VideoComponent } from './pages/mainpage/sections/video/video.component'
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import { DynamicloaderDirective } from 'src/app/directives/dynamicloader.directive';
-import { FooterComponent } from 'src/app/layout/footer/footer.component';
-import { NavbarComponent } from 'src/app/layout/navbar/navbar.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -25,11 +23,9 @@ import { NavbarComponent } from 'src/app/layout/navbar/navbar.component';
                  TeachersComponent,
                  VideoComponent,
                  MainpageComponent,
-                 HomeComponent,
-                 DynamicloaderDirective,
-                 FooterComponent
+                 HomeComponent
                  ],
-  imports: [CommonModule,HomeRoutingModule],
+  imports: [CommonModule,HomeRoutingModule,SharedModule],
   exports: [],
   providers: []
 })

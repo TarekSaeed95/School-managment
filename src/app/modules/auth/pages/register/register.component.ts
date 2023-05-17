@@ -14,8 +14,9 @@ export class RegisterComponent {
   formresponce:boolean=false;
   message:string='';
   typemess:string='';
-  stdimage:any="../../../../../assets/images/studentreg.png"
-  patimage:any="../../../../../assets/images/parentreg.png"
+  stdimage:any="";
+  patimage:any="";
+  birthimage:any="";
 
   registerform:FormGroup=new FormGroup({
     studentFirstName: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
@@ -27,9 +28,10 @@ export class RegisterComponent {
     parentFullName: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(15)]),
     parentEmail: new FormControl('',[Validators.required,Validators.email]),
     parentPhone: new FormControl('',[Validators.required,Validators.pattern("^(010|011|012|015)[0-9]{8}$")]),
-    studentPhotoUrl: new FormControl('',[]),
-    identityParentPhotoUrl: new FormControl('',[]),
-    password: new FormControl('',[Validators.required,Validators.minLength(8)])
+    StudentPhoto: new FormControl('',[Validators.required]),
+    IdentityParentPhoto: new FormControl('',[Validators.required]),
+    StudentBirthCertPhoto:new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required,Validators.minLength(8),Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")])
   });
   constructor(private authservice:AuthserviceService){}
   get stdFnameControl(){
@@ -60,24 +62,62 @@ export class RegisterComponent {
     return this.registerform.controls['parentPhone']
   }
   get stdPhotoControl(){
-    return this.registerform.controls['studentPhotoUrl']
+    return this.registerform.controls['StudentPhoto']
   }
   get patPhotoControl(){
-    return this.registerform.controls['identityParentPhotoUrl']
+    return this.registerform.controls['IdentityParentPhoto']
+  }
+  get stdtBirthPhotoControl(){
+    return this.registerform.controls['StudentBirthCertPhoto']
   }
   get passwordControl(){
     return this.registerform.controls['password']
   }
   changephoto(image:any,person:number){
-    console.log(image)
     var reader = new FileReader();
 		reader.readAsDataURL(image.target.files[0]);
 		reader.onload = (_event) => {
-      if(person==0)
-			  this.stdimage = reader.result; 
-      else
-        this.patimage = reader.result;
+      if(person==0){
+        this.getBase64(image.target.files[0]).then(
+          data => {
+            this.stdimage=data;
+            this.stdimage=this.stdimage.split(",").pop();
+          });
+      }
+      else if(person==1){
+        this.getBase64(image.target.files[0]).then(
+          data => {
+            this.patimage=data;
+            this.patimage=this.patimage.split(",").pop();
+             });
+      }
+      else{
+        this.getBase64(image.target.files[0]).then(
+          data => {
+            this.birthimage=data;
+            this.birthimage=this.birthimage.split(",").pop();
+             });
+      }
+
 		}
+  }
+  getBase64(file:any) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () =>{ resolve(reader.result)};
+      reader.onerror = error => reject(error);
+    });
+  }
+  validateDOB(dob:any){
+    let today=new Date();
+    let birth=new Date(dob.target.value)
+    if(birth.getFullYear()>1999&&today.getFullYear()-birth.getFullYear()>=6){
+      this.stdBDControl.setErrors(null);
+    }
+    else{
+      this.stdBDControl.setErrors({'notvalid':true})
+    }
   }
   register(){
     this.submitted=true;
@@ -86,20 +126,27 @@ export class RegisterComponent {
         let user:request={
           ...this.registerform.value
         }
+        user.id=0;
+        user.StudentPhoto=this.stdimage;
+        user.IdentityParentPhoto=this.patimage;
+        user.StudentBirthCertPhoto=this.birthimage;
         user.studentGender=+user.studentGender;
+        console.log(user);
         this.authservice.createrequest(user).subscribe(
-        val=>{
-          console.log(val);
-          this.formresponce=true;
-          this.typemess='success';
-          this.message='Registration was successful. We will contact with you in 24 hour';
-        },
-        err=>{
-          console.log(err)
-          this.formresponce=true;
-          this.typemess='failed';
-          this.message='Registration was faild!';
-        });
+          {
+            next:val=>{
+              console.log(val);
+              this.formresponce=true;
+              this.typemess='success';
+              this.message='Registration was successful. We will contact with you in 24 hour';
+            },
+            error:err=>{
+              console.log(err)
+              this.formresponce=true;
+              this.typemess='failed';
+              this.message='Registration was faild!';
+            }
+          });
     }
   }
 }

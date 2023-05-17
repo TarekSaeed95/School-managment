@@ -20,7 +20,7 @@ export class AuthserviceService {
     return this.http.post<register>(this.url+"Auth/login",user);
   }
   public setuser(user:register){
-    localStorage.setItem('user',JSON.stringify(user));
+    localStorage.setItem('user',JSON.stringify(user.token));
     this.logoutflag.next(false);
     this.profile(user.roles[0].toLocaleLowerCase());
   }

@@ -60,12 +60,13 @@
                         <label for="birthdate" class="input-group-text">
                             <span class="fa-sharp fa-solid fa-birthday-cake"></span>
                         </label>
-                        <input type="date" class="form-control"   
+                        <input type="date" class="form-control"   (change)="validateDOB($event)"
                         placeholder="Birth Date" id="birthdate" formControlName="studentBirthDate"
                         [ngClass]="{'is-invalid':(stdBDControl.errors&&stdBDControl.touched)||(stdBDControl.errors&&submitted)}"/>
                     </div>
                     <div *ngIf="(stdBDControl.errors&&submitted)||(stdBDControl.errors&&stdBDControl.touched)" class="invalid">
                         <p *ngIf="stdBDControl.errors['required']" class="invalid-feedback">BirthDate is required</p>
+                        <p *ngIf="stdBDControl.errors['notvalid']" class="invalid-feedback">BirthDate is invalid</p>
                     </div>
                 </div>
             </div>
@@ -128,7 +129,7 @@
                 <label for="parentemail" class="input-group-text">
                     <span class="fa-sharp fa-solid fa-mail-bulk"></span>
                 </label>
-                <input type="email" class="form-control"   
+                <input type="email" class="form-control" 
                 placeholder="parent email" id="parentemail" formControlName="parentEmail"
                 [ngClass]="{'is-invalid':(patEmailControl.errors&&patEmailControl.touched)||(patEmailControl.errors&&submitted)}"/>
             </div>
@@ -154,30 +155,46 @@
             <div class="row">
                 <div class="col studentimage">
                     <label for="stdphoto">
-                        <img [src]="stdimage"/>
+                        <img [src]="stdimage!=''?'data:image/jpeg;base64,'+stdimage:'../../../../../assets/images/studentreg.png'"
+                        [ngClass]="{'is-invalid':(stdPhotoControl.errors&&stdPhotoControl.touched)||(stdPhotoControl.errors&&submitted)}"/>
                         <p>student image</p>
                     </label>
                     <div class="form-group">
-                        <input type="file" class="form-control" (change)="changephoto($event,0)"
-                        placeholder="personal photo" id="stdphoto" formControlName="studentPhotoUrl"
-                        [ngClass]="{'is-invalid':(stdPhotoControl.errors&&stdPhotoControl.touched)||(stdPhotoControl.errors&&submitted)}"/>
+                        <input type="file" class="form-control" accept="image/*" (change)="changephoto($event,0)"
+                        placeholder="personal photo" id="stdphoto" formControlName="StudentPhoto"/>
                     </div>
                     <div *ngIf="(stdPhotoControl.errors&&submitted)||(stdPhotoControl.errors&&stdPhotoControl.touched)" class="invalid">
-                        <p *ngIf="stdPhotoControl.errors['required']" class="invalid-feedback">parent email is required</p>
+                        <p *ngIf="stdPhotoControl.errors['required']" class="invalid-feedback">student photo is required</p>
                     </div>
                 </div>
                 <div class="col parentimage">
                     <label for="parentphoto">
-                        <img [src]="patimage"/>
-                        <p>parent photo</p>
+                        <img [src]="patimage!=''?'data:image/jpeg;base64,'+patimage:'../../../../../assets/images/parentreg.png'"
+                        [ngClass]="{'is-invalid':(patPhotoControl.errors&&patPhotoControl.touched)||(patPhotoControl.errors&&submitted)}"/>
+                        <p>parent identity photo</p>
                     </label>
                     <div class="form-group">
-                        <input type="file" class="form-control"   (change)="changephoto($event,1)"
-                        placeholder="parent photo" id="parentphoto" formControlName="identityParentPhotoUrl"
-                        [ngClass]="{'is-invalid':(patPhotoControl.errors&&patPhotoControl.touched)||(patPhotoControl.errors&&submitted)}"/>
+                        <input type="file" class="form-control" accept="image/*"   (change)="changephoto($event,1)"
+                        placeholder="parent photo" id="parentphoto" formControlName="IdentityParentPhoto"
+                        />
                     </div>
                     <div *ngIf="(patPhotoControl.errors&&submitted)||(patPhotoControl.errors&&patPhotoControl.touched)" class="invalid">
                         <p *ngIf="patPhotoControl.errors['required']" class="invalid-feedback">parent photo is required</p>
+                    </div>
+                </div>
+                <div class="col birthdateimage">
+                    <label for="birthphoto">
+                        <img [src]="birthimage!=''?'data:image/jpeg;base64,'+birthimage:'../../../../../assets/images/parentreg.png'"
+                        [ngClass]="{'is-invalid':(stdtBirthPhotoControl.errors&&stdtBirthPhotoControl.touched)||(stdtBirthPhotoControl.errors&&submitted)}"/>
+                        <p>student birth date photo</p>
+                    </label>
+                    <div class="form-group">
+                        <input type="file" class="form-control" accept="image/*"  (change)="changephoto($event,2)"
+                        placeholder="birthdate photo" id="birthphoto" formControlName="StudentBirthCertPhoto"
+                        />
+                    </div>
+                    <div *ngIf="(stdtBirthPhotoControl.errors&&submitted)||(stdtBirthPhotoControl.errors&&stdtBirthPhotoControl.touched)" class="invalid">
+                        <p *ngIf="stdtBirthPhotoControl.errors['required']" class="invalid-feedback">BirthDate photo is required</p>
                     </div>
                 </div>
             </div>

@@ -3,12 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ForgetPasswordComponent } from './pages/forgetPassword/forgetPassword.component';
+import { LayoutauthComponent } from './pages/layoutauth/layoutauth.component';
 
 const routes: Routes = [
-  {path:"",redirectTo:"login",pathMatch:'full'},
-  {path:"login",component:LoginComponent},
-  {path:"register",component:RegisterComponent},
-  {path:'forgetpassword',component:ForgetPasswordComponent}
+  {
+    path:'',
+    redirectTo:'',
+    pathMatch:'full'
+  },
+  {
+    path:'',
+    component:LayoutauthComponent,
+    children:[
+      {path:"login",component:LoginComponent},
+      {path:"register",component:RegisterComponent},
+      {path:'forgetpassword',component:ForgetPasswordComponent}
+    ]
+  }
 ];
 
 @NgModule({

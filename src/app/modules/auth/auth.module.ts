@@ -9,6 +9,8 @@ import { ForgetPasswordComponent } from './pages/forgetPassword/forgetPassword.c
 import { MessagerespnceComponent } from './pages/messagerespnce/messagerespnce.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthserviceService } from '../../services/authservice.service';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { LayoutauthComponent } from './pages/layoutauth/layoutauth.component';
 
 @NgModule({
   declarations: [
@@ -16,15 +18,17 @@ import { AuthserviceService } from '../../services/authservice.service';
     RegisterComponent,
     ChangepasswordComponent,
     ForgetPasswordComponent,
-    MessagerespnceComponent
+    MessagerespnceComponent,
+    LayoutauthComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
-  bootstrap:[LoginComponent]
+  bootstrap:[    LayoutauthComponent  ]
 })
 export class AuthModule { }

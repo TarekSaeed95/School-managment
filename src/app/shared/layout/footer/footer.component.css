@@ -20,7 +20,7 @@ h5{
     background-size: cover !important;
 }
 footer{
-    background-image: url('../../../assets/images/footer1.jpg');
+    background-image: url('../../../../assets/images/footer1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 7.0625rem !important;
@@ -184,19 +184,19 @@ background-color: #0f0d0dad ;
     border-radius: 10px;
 }
 .image1{
-    background-image: url('../../../assets/images/boxes-photo.jpg');
+    background-image: url('../../../../assets/images/boxes-photo.jpg');
 }
 .image2{
-    background-image: url('../../../assets/images/events1.webp');
+    background-image: url('../../../../assets/images/events1.webp');
 }
 .image3{
-    background-image: url('../../../assets/images/events2.webp');
+    background-image: url('../../../../assets/images/events2.webp');
 }
 .image4{
-    background-image: url('../../../assets/images/courses-photo.webp');
+    background-image: url('../../../../assets/images/courses-photo.webp');
 }
 .image5{
-    background-image: url('../../../assets/images/event6.webp');
+    background-image: url('../../../../assets/images/event6.webp');
 }
 .social_row{
     display: flex;
